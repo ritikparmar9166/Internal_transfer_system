@@ -15,7 +15,7 @@ public class TransactionRequest {
 
     @NotNull
     @Positive
-    @Digits(integer = 14, fraction = 5)
+    @Digits(integer=14, fraction= 5)
     private BigDecimal amount;
 
     public Long getSource_account_id() {

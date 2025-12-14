@@ -14,8 +14,8 @@ public class AccountController {
 
     private final AccountService accountService;
 
-    public AccountController(AccountService accountRegistry) {
-        this.accountService = accountRegistry;
+    public AccountController(AccountService accountService) {
+        this.accountService = accountService;
     }
 
     @PostMapping
@@ -25,7 +25,7 @@ public class AccountController {
     }
 
     @GetMapping("/{accountId}")
-    public AccountResponse get(@PathVariable Long accountId) {
+    public AccountResponse getAccountBalance(@PathVariable Long accountId) {
         return AccountResponse.from(accountService.getAccount(accountId));
     }
 }

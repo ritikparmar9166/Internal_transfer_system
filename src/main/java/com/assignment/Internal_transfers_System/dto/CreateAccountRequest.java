@@ -11,10 +11,9 @@ public class CreateAccountRequest {
     @NotNull
     private Long account_id;
 
-
     @NotNull
     @Positive
-    @Digits(integer = 14, fraction = 5)
+    @Digits(integer =14, fraction = 5)
     private BigDecimal initial_balance;
 
     public Long getAccount_id() {

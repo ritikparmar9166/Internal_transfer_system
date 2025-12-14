@@ -22,13 +22,13 @@ public class AccountService {
     }
 
     @Transactional
-    public void openAccount(Long accountId, BigDecimal openingBalance) {
+    public void openAccount(Long accountId, BigDecimal initialBalance) {
         if (accountRepository.findByAccountId(accountId).isPresent()) {
             throw new ConflictException("Account " + accountId + " already exists");
         }
 
-        log.info("opening account with id {} and balance {} ", accountId, openingBalance);
-        accountRepository.save(new Account(accountId, openingBalance));
+        log.info("opening account with id {} and balance {} ", accountId, initialBalance);
+        accountRepository.save(new Account(accountId, initialBalance));
     }
 
     @Transactional(readOnly = true)
