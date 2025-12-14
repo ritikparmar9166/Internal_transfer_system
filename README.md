@@ -1,17 +1,18 @@
 # Internal Transfers System
 
-Simple REST API for transferring money between accounts using Spring Boot and PostgreSQL.
+Simple REST API for transferring money between accounts using SpringBoot and PostgreSQL.
 
 ## Setup
 
 You'll need:
 - Java 17+
 - PostgreSQL running locally
-- Maven (or use `./mvnw`)
+- Maven 
 
 ### Database Setup
 
 Create the database in PostgreSQL:
+
 ```sql
 CREATE DATABASE internal_transfers;
 ```
@@ -26,8 +27,9 @@ If you are using a non-superuser PostgreSQL role, ensure the user has
 sufficient privileges on the database:
 
 ```
-GRANT ALL PRIVILEGES ON DATABASE internal_transfers TO <db_user>;
+GRANT ALL PRIVILEGES ON DATABASE internal_transfers TO <user>;
 ```
+
 
 ### Running
 ```bash
@@ -40,11 +42,12 @@ App runs on `http://localhost:8080`
 ## API Usage
 
 **Create Account**
+
 ```bash
 POST /accounts
 {
   "account_id": 123,
-  "initial_balance": "100.00"
+  "initial_balance": "234.34"
 }
 ```
 
@@ -52,6 +55,7 @@ POST /accounts
 ```bash
 GET /accounts/123
 ```
+
 
 **Transfer Money**
 ```bash
@@ -79,16 +83,16 @@ curl http://localhost:8080/accounts/456
 
 ## Notes
 
-- Uses pessimistic locking to handle concurrent transfers
-- Amounts stored with 5 decimal precision
-- Tables are auto-created by Hibernate on startup
-- No auth implemented (as per requirements)
+- Uses pessimistic locking to handle concurrent transfers between accounts
+- Amounts stored with 5 decimal precision 
+- Tables are auto-created by Hibernate on start of the project
 
 ## Troubleshooting
+
 
 If postgres connection fails, check that:
 - Database exists and postgres is running
 - Username/password in application.properties are correct
-- Port 5432 is accessible
+- Port 5432 is accessable
 
 If port 8080 is already taken, change it in application.properties: `server.port=8081`
